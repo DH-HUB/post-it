@@ -54,5 +54,9 @@
             }
         }
         
-        monTest = new becquet(100, 200, 30, 'yellow','red', 'green');
-        monTest.afficheTest();
+        monTest = new becquet(100, 200, 30, 'yellow');
+        violet  =  new becquet( 200 , 300 , 30 , "purple" ) ;	
+        vert =  new becquet( 300 , 400 , 30, "green" ) ;
+        monTest . afficheTest ( ) ;	
+        violet. afficheTest ( ) ;	
+        vert . afficheTest ( ) ;
