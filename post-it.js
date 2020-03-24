@@ -1,9 +1,11 @@
 class becquet {
 
-	constructor(x, y, couleur, texte) {
+	constructor(x, y, vitesse, couleur) {
+
+		this.vitesse = vitesse;
 		
 		idMax = idMax + 1;
-		this.id = "postIt" + idMax; //Un id unique pour chaque postIt créé
+		this.id = "postIt" + idMax; //Un id unique pour chaque postIt créé 
 		
 		let monElem = document.createElement('div');
 		monElem.id = this.id;
@@ -16,10 +18,7 @@ class becquet {
 		monElem.style.backgroundColor = couleur;
 		monElem.style.padding = "5px";
 		monElem.style.color = "black";
-		monElem.style.zIndex = 1000; // placement au 1er plan
-		
-		// Création de la zone de texte
-		monElem.innerHTML = "<br/><textarea id='texte" + monElem.id + "' style='border:0;background-color:" + couleur + ";' cols='16' rows='6'>" + texte + "</textarea>";
+		monElem.innerHTML = "vitesse : " + this.vitesse;
 
 		// Gestion du Drag & Drop lorsqu'on clique sur l'objet
 		monElem.onmousedown = function(event) {
@@ -72,7 +71,7 @@ class becquet {
 let idMax = 0;
 
 // Création de 3 postIt (le constructeur crée l'objet et l'affiche)
-new becquet(100, 200, "yellow", "Post it jaune");
-new becquet(200 , 300 , "purple", "Post it violet");
-new becquet(300 , 400 , "green", "Post it vert");
-
+let jaune = new becquet(100, 200, 10, 'yellow');
+let violet  =  new becquet(200 , 300 , 20 , "purple");	
+let vert =  new becquet(300 , 400 , 30, "green");
+//Affichage du texte en cours
