@@ -21,9 +21,11 @@ class becquet {
 		monElem.style.color = "black";
 		monElem.style.zIndex = 1000; // placement au 1er plan
 		
-	// Création du contenu du post-it : un lien pour dupliquer, une zone de saisie de texte
+	// Création du contenu du post-it : un lien pour dupliquer, un lien pour supprimer et une zone de saisie de texte
 		monElem.innerHTML = "<a href='javascript:dupliquer(" + monElem.id + ")'>Dupliquer</a>" 
-			+ "<br/><textarea id='texte" + monElem.id + "' style='border:0;background-color:" + couleur + ";' cols='16' rows='6'>" + texte + "</textarea>";
+		+ "<br/><a href='javascript:supprimer(" + monElem.id + ")'>Supprimer</a>"
+		+ "<br/><textarea id='texte" + monElem.id + "' style='border:0;background-color:" + couleur + ";' cols='16' rows='6'>" + texte + "</textarea>";
+		
 
 		// Gestion du Drag & Drop lorsqu'on clique sur l'objet
 		monElem.onmousedown = function(event) {
@@ -91,6 +93,12 @@ function dupliquer(postIt) {
 	
 	// création du nouveau post-it
 	new becquet(newX, newY, couleur, "New POST IT");
+}
+// Fonction de suppression
+function supprimer(postIt) {
+	console.log("Suppression du post-it " + postIt.id);
+	
+	postIt.parentNode.removeChild(postIt);
 }
 
 	
