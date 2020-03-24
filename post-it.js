@@ -74,4 +74,4 @@ let idMax = 0;
 let jaune = new becquet(100, 200, 10, 'yellow');
 let violet  =  new becquet(200 , 300 , 20 , "purple");	
 let vert =  new becquet(300 , 400 , 30, "green");
-//Affichage du texte en cours
+ 
