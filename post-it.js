@@ -21,8 +21,9 @@ class becquet {
 		monElem.style.color = "black";
 		monElem.style.zIndex = 1000; // placement au 1er plan
 		
-		// Création de la zone de saisie de texte
-		monElem.innerHTML =  "<br/><textarea id='texte" + monElem.id + "' style='border:0;background-color:" + couleur + ";' cols='16' rows='6'>" + texte + "</textarea>";
+	// Création du contenu du post-it : un lien pour dupliquer, une zone de saisie de texte
+		monElem.innerHTML = "<a href='javascript:dupliquer(" + monElem.id + ")'>Dupliquer</a>" 
+			+ "<br/><textarea id='texte" + monElem.id + "' style='border:0;background-color:" + couleur + ";' cols='16' rows='6'>" + texte + "</textarea>";
 
 		// Gestion du Drag & Drop lorsqu'on clique sur l'objet
 		monElem.onmousedown = function(event) {
@@ -78,6 +79,19 @@ new becquet(100, 200, "yellow", "Post it jaune");
 new becquet(200 , 300 , "purple", "Post it violet");
 new becquet(300 , 400 , "green", "Post it vert");
 
+// Fonction de duplication
+function dupliquer(postIt) {
+	console.log("Duplication du post-it " + postIt.id);
+	
+	var x = postIt.style.left; // cette valeur est de type texte et comporte px à la fin
+	var y = postIt.style.top; // cette valeur est de type texte et comporte px à la fin
+	var newX = parseInt(x.substring(0, x.length - 2)) + 50; // Je récupère la valeur entière en découpant la chaine (on enlève px) et on lui ajoute 50
+	var newY = parseInt(y.substring(0, y.length - 2)) + 50; // Je récupère la valeur entière en découpant la chaine (on enlève px) et on lui ajoute 50
+	var couleur = postIt.style.backgroundColor;
+	
+	// création du nouveau post-it
+	new becquet(newX, newY, couleur, "New POST IT");
+}
 
 	
 	
